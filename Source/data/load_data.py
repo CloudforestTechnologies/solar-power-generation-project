@@ -8,18 +8,21 @@ This file supports loading project data into memory.
 # Module importations
 import pandas as pd
 
-def load_motor_data():
+# Constants
+SAVE_DIRECTORY = r'C:\Developer\solar-power-generation-project\Data\Raw'
+
+def load_motor_data(filename):
     """Load Dataset
     ======================================
     Loads dataset from user-specified directory.
     
     Args:
-        None.
+        filename (Str) - Name of csv file.
         
     Returns:
         dataframe (dataframe) - Dataframe loaded with data from csv.
     """
 
-    file_string = r'C:\Users\ASUS-PC\OneDrive\Cloudforest Technologies\M. Projects\Yellow Cuckoo\pmsm_temperature_data.csv'
-    
+    file_string = SAVE_DIRECTORY + filename
+
     return pd.read_csv(file_string)
