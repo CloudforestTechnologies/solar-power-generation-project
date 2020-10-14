@@ -10,6 +10,7 @@ from datetime import datetime
 TITLE_FONTSIZE = 18
 PROJECT_CODE = 'WJ'
 SAVE_FORMAT = '.png'
+SAVE_DPI = 600
 
 # Helper Method for saving figures
 def generate_fig_save_string(filename):
