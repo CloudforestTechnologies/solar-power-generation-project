@@ -5,23 +5,23 @@ This file supports data cleaning and preprocessing operations.
 '''
 
 # Module Importations
+import datetime
 import pandas as pd
-from dateutil import parser
 
-def return_datetime_id(datetime_string):
-    """Return Datetime Id
+def return_datetime(datetime_string):
+    """Return Datetime
     ======================================
-    Returns a datetime id based on date and time from data instance.
+    Returns a datetime based on date and time from data instance.
     
     Args:
         datetime_string (str) - Datetime as a string object.
         
     Returns:
-        datetime_id (str) - Datetime (UTC) stamp returned as a string.
+        datetime (DateTime) - DateTime object corresponding to date and time.
     """
 
     # Convert to datetime
-    datetime_date = parser.parse(datetime_string)
+    datetime_date = datetime.datetime.strptime(datetime_string, '%d-%m-%Y %H:%M')
 
     # Return datetime
     return datetime_date
