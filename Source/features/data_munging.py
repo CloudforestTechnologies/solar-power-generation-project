@@ -49,8 +49,9 @@ def return_cell_number(source_key):
 
     # Try to find cell number in dict
     try:
-        cell_number = cell_number_dict(source_key)
+        cell_number = cell_number_dict[source_key]
     except:
-        cell_number = ""
+        cell_number = "Not Found"
 
     # Return cell number
+    return cell_number
