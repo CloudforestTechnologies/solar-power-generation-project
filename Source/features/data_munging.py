@@ -25,3 +25,17 @@ def return_datetime(datetime_string):
 
     # Return datetime
     return datetime_date
+
+def return_cell_number(source_key):
+    """Return Cell Number
+    ======================================
+    Returns a cell number based on a Source Key value used with a dict.
+    
+    Args:
+        source_key (str) - Source key for the .
+        
+    Returns:
+        cell_number (int) - Cell number as an integer.
+    """
+
+    pass
