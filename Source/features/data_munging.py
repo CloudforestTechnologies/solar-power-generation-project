@@ -61,19 +61,24 @@ def return_cell_number(source_key):
     # Return cell number
     return cell_number
 
-def return_amb_temp(weather_df, datetime_string):
+def return_amb_temp(weather_df, datetime):
     """Return Ambient Temperature
     ======================================
     Returns an ambient temperature retrieved using a datetime key.
     
     Args:
         weather_df (df) - DataFrame containing weather data.
-        datetime_string (str) - Datetime as a string object.
+        datetime (datetime) - Datetime as datetime object.
         
     Returns:
         amb_temp (float64) - Ambient temperature corresponding to datetime.
     """
 
+    # Retrieve amb temp from weather df
+    amb_temp = weather_df['AMBIENT_TEMP'] == datetime
+
+    # Return amb temp
+    return amb_temp
 
 def combine_generation_weather_dataframes(generation_df, weather_df):
     """Combine Generation & Weather Dataframes
@@ -99,5 +104,4 @@ def combine_generation_weather_dataframes(generation_df, weather_df):
     # Create new column for irradiation using lambda on row and datetime
 
     # Return dataframe
-
-    pass
+    return df_combi
