@@ -41,8 +41,10 @@ def pickle_data(input_dataframe, filename):
         None.
     """
 
-    # Build save string
+    # Build pickle string
+    pickle_string = PICKLE_DIRECTORY + "/" + filename + ".pkl"
 
-    # Save dataframe
+    # Pickle dataframe
+    input_dataframe.to_pickle(pickle_string)
 
-    pass
+    print("Pickled dataframe to: " + pickle_string)
