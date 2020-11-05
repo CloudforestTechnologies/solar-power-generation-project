@@ -48,3 +48,23 @@ def pickle_data(input_dataframe, filename):
     input_dataframe.to_pickle(pickle_string)
 
     print("Pickled dataframe to: " + pickle_string)
+
+def load_pickled_data(filename):
+    """Load Pickled Data
+    ======================================
+    Loads pickled data from Interim folder into a returned dataframe.
+    
+    Args:
+        filename (str) - Name of pickled file.
+        
+    Returns:
+        dataframe (dataframe) - Dataframe loaded with data from pickle.
+    """
+
+    # Build load string
+
+    # Load data into dataframe
+
+    # Return dataframe
+
+    pass
