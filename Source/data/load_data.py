@@ -9,7 +9,7 @@ This file supports loading project data into memory.
 import pandas as pd
 
 # Constants
-SAVE_DIRECTORY = r'C:/Developer/solar-power-generation-project/Data/Raw'
+LOAD_DIRECTORY = r'C:/Developer/solar-power-generation-project/Data/Raw'
 
 def load_data(filename):
     """Load Dataset
@@ -23,6 +23,6 @@ def load_data(filename):
         dataframe (dataframe) - Dataframe loaded with data from csv.
     """
 
-    file_string = SAVE_DIRECTORY + '/' + filename
+    file_string = LOAD_DIRECTORY + '/' + filename
 
     return pd.read_csv(file_string)
