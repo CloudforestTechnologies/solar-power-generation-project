@@ -36,7 +36,7 @@ def return_cell_number(source_key):
     Returns a cell number based on a Source Key value used with a dict.
     
     Args:
-        source_key (str) - Source key for the .
+        source_key (str) - Source key for the cell (both plants have same cell key).
         
     Returns:
         cell_number (str) - Cell number as a string.
