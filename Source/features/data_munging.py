@@ -75,7 +75,7 @@ def return_amb_temp(weather_df, datetime):
     """
 
     # Retrieve amb temp from weather df
-    amb_temp = weather_df['AMBIENT_TEMP'] == datetime
+    amb_temp = weather_df['AMBIENT_TEMPERATURE'] == datetime
 
     # Return amb temp
     return amb_temp
