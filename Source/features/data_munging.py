@@ -25,7 +25,7 @@ def return_datetime(df_type, datetime_string):
     if df_type == 'generation':
         datetime_date = datetime.datetime.strptime(datetime_string, '%d-%m-%Y %H:%M')
     elif df_type == 'weather':
-        datetime_date = datetime.datetime.strptime(datetime_string, '%d-%m-%Y %H:%M:%S')
+        datetime_date = datetime.datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
 
     # Return datetime
     return datetime_date
