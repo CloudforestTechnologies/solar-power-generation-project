@@ -60,3 +60,28 @@ def return_cell_number(source_key):
 
     # Return cell number
     return cell_number
+
+def combine_generation_weather_dataframes(generation_df, weather_df):
+    """Combine Generation & Weather Dataframes
+    ======================================
+    Returns a dataframe combining generation and weather data.
+    
+    Args:
+        generation_df (dataframe) - Dataframe containing generation data.
+        weather_df (dataframe) - Dataframe containing weather data.
+        
+    Returns:
+        combined_df (dataframe) - Dataframe containing combined datasets.
+    """
+
+    # Create new df from generation copy
+
+    # Create new column for amb temp using lambda on row and datetime
+
+    # Create new column for mod temp using lambda on row and datetime
+
+    # Create new column for irradiation using lambda on row and datetime
+
+    # Return dataframe
+
+    pass
