@@ -49,22 +49,25 @@ def pickle_data(input_dataframe, filename):
 
     print("Pickled dataframe to: " + pickle_string)
 
-def load_pickled_data(filename):
+def load_pickled_data(pickled_filename):
     """Load Pickled Data
     ======================================
     Loads pickled data from Interim folder into a returned dataframe.
     
     Args:
-        filename (str) - Name of pickled file.
+        pickled_filename (str) - Name of pickled file.
         
     Returns:
         dataframe (dataframe) - Dataframe loaded with data from pickle.
     """
 
     # Build load string
+    load_string = PICKLE_DIRECTORY + '/' + pickled_filename
 
     # Load data into dataframe
+    df_loaded = pd.read_pickle(load_string)
+
+    print("Loaded pickled dataframe ...")
 
     # Return dataframe
-
-    pass
+    return df_loaded
