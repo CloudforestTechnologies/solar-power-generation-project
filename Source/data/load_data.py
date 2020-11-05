@@ -10,6 +10,7 @@ import pandas as pd
 
 # Constants
 LOAD_DIRECTORY = r'C:/Developer/solar-power-generation-project/Data/Raw'
+PICKLE_DIRECTORY = r'C:/Developer/solar-power-generation-project/Data/Interim'
 
 def load_data(filename):
     """Load Dataset
@@ -26,3 +27,22 @@ def load_data(filename):
     file_string = LOAD_DIRECTORY + '/' + filename
 
     return pd.read_csv(file_string)
+
+def pickle_data(input_dataframe, filename):
+    """Pickle Data
+    ======================================
+    Pickles data into a dataframe saved in user-specified directory.
+    
+    Args:
+        input_dataframe (dataframe) - Dataframe to be pickled.
+        filename (str) - Name of pickled file.
+        
+    Returns:
+        None.
+    """
+
+    # Build save string
+
+    # Save dataframe
+
+    pass
