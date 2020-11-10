@@ -4,6 +4,8 @@ This data analysis and machine learning project investigates relationships betwe
 
 Data has been gathered at two solar power plants in India over a 34 day period. Power generation datasets are gathered at the inverter level, with each inverter connected to multiple lines of solar panels, whilst sensor data is gathered at the plant level, with a single array of sensors optimally placed within the plant.
 
+![Solar Power Generation](https://github.com/PMetcalf/solar-power-generation-project/blob/master/solar_panel_low_res_201110.jpg)
+
 Project Objectives
 ---
 
