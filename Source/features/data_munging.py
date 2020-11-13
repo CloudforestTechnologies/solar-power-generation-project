@@ -75,7 +75,7 @@ def return_amb_temp(weather_df, datetime):
     """
 
     # Retrieve amb temp from weather df
-    amb_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].AMBIENT_TEMPERATURE
+    amb_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].AMBIENT_TEMPERATURE.values[0]
 
     # Return amb temp
     return amb_temp
