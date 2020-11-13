@@ -85,6 +85,30 @@ def return_amb_temp(weather_df, datetime):
     # Return amb temp
     return amb_temp
 
+def return_mod_temp(weather_df, datetime):
+    """Return Module Temperature
+    ======================================
+    Returns an module temperature retrieved using a datetime key.
+    
+    Args:
+        weather_df (df) - DataFrame containing weather data.
+        datetime (datetime) - Datetime as datetime object.
+        
+    Returns:
+        mod_temp (float64) - Module temperature corresponding to datetime.
+    """
+
+    # Retrieve mod temp from weather df
+    try:
+        mod_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].MODULE_TEMPERATURE.values[0]
+
+    except:
+        mod_temp = 28
+        print(datetime, mod_temp)
+
+    # Return mod temp
+    return mod_temp
+
 def combine_generation_weather_dataframes(generation_df, weather_df):
     """Combine Generation & Weather Dataframes
     ======================================
@@ -105,6 +129,7 @@ def combine_generation_weather_dataframes(generation_df, weather_df):
     df_combi['AMB_TEMP'] = df_combi.apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME']), axis = 1)
 
     # Create new column for mod temp using lambda on row and datetime
+    df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME']), axis = 1)
 
     # Create new column for irradiation using lambda on row and datetime
 
