@@ -78,6 +78,10 @@ def return_amb_temp(weather_df, datetime):
     try:
         amb_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].AMBIENT_TEMPERATURE.values[0]
 
+    except:
+        amb_temp = 28
+        print(datetime, amb_temp)
+
     # Return amb temp
     return amb_temp
 
