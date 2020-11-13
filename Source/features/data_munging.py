@@ -158,6 +158,5 @@ def combine_generation_weather_dataframes(generation_df, weather_df):
     # Create new column for irradiation using lambda on row and datetime
     df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME']), axis = 1)
 
-
     # Return dataframe
     return df_combi
