@@ -88,7 +88,7 @@ def return_amb_temp(weather_df, datetime):
 def return_mod_temp(weather_df, datetime):
     """Return Module Temperature
     ======================================
-    Returns an module temperature retrieved using a datetime key.
+    Returns a module temperature value retrieved using a datetime key.
     
     Args:
         weather_df (df) - DataFrame containing weather data.
@@ -98,16 +98,40 @@ def return_mod_temp(weather_df, datetime):
         mod_temp (float64) - Module temperature corresponding to datetime.
     """
 
-    # Retrieve mod temp from weather df
+    # Retrieve module temperature from weather df
     try:
         mod_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].MODULE_TEMPERATURE.values[0]
 
     except:
-        mod_temp = 28
+        mod_temp = 22
         print(datetime, mod_temp)
 
-    # Return mod temp
+    # Return module temperature
     return mod_temp
+
+def return_irradiation(weather_df, datetime):
+    """Return Irradiation
+    ======================================
+    Returns a module irradiation value retrieved using a datetime key.
+    
+    Args:
+        weather_df (df) - DataFrame containing weather data.
+        datetime (datetime) - Datetime as datetime object.
+        
+    Returns:
+        irradiation (float64) - Irradiation corresponding to datetime.
+    """
+
+    # Retrieve mod temp from weather df
+    try:
+        irradiation = weather_df.loc[(weather_df.DATE_TIME == datetime)].IRRADIATION.values[0]
+
+    except:
+        irradiation = 0
+        print(datetime, irradiation)
+
+    # Return mod temp
+    return irradiation
 
 def combine_generation_weather_dataframes(generation_df, weather_df):
     """Combine Generation & Weather Dataframes
@@ -132,6 +156,8 @@ def combine_generation_weather_dataframes(generation_df, weather_df):
     df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME']), axis = 1)
 
     # Create new column for irradiation using lambda on row and datetime
+    df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME']), axis = 1)
+
 
     # Return dataframe
     return df_combi
