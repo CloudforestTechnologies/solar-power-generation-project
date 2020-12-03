@@ -39,12 +39,14 @@ def return_time_of_day(datetime_value):
         datetime_value (DateTime) - Datetime as a datetime object.
         
     Returns:
-        time_value (DateTime) - DateTime object corresponding to time only.
+        time_of_day (DateTime) - DateTime object corresponding to time only.
     """
 
     # Derive time from datetime
+    time_of_day = datetime_value.time
 
     # Return time
+    return time_of_day
 
 def return_cell_number(source_key):
     """Return Cell Number
