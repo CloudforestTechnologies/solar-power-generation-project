@@ -43,7 +43,7 @@ def return_time_of_day(datetime_value):
     """
 
     # Derive time from datetime
-    time_of_day = datetime_value.time
+    time_of_day = datetime_value.time()
 
     # Return time
     return time_of_day
