@@ -30,6 +30,22 @@ def return_datetime(df_type, datetime_string):
     # Return datetime
     return datetime_date
 
+def return_time_of_day(datetime_value):
+    """Return Time of Day
+    ======================================
+    Returns a time of day based on time from data instance.
+    
+    Args:
+        datetime_value (DateTime) - Datetime as a datetime object.
+        
+    Returns:
+        time_value (DateTime) - DateTime object corresponding to time only.
+    """
+
+    # Derive time from datetime
+
+    # Return time
+
 def return_cell_number(source_key):
     """Return Cell Number
     ======================================
