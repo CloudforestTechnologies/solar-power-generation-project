@@ -178,18 +178,3 @@ def combine_generation_weather_dataframes(generation_df, weather_df):
 
     # Return dataframe
     return df_combi
-
-def add_fixed_value_to_dataframe(data_value, df):
-    """Add Fixed Value to Dataframe
-    ======================================
-    Adds a fixed value (a tag, for example) as a new column to each row in dataframe.
-    
-    Args:
-        data_value (Object) - Data to be added to dataframe.
-        df (dataframe) - Dataframe containing original data.
-        
-    Returns:
-        returned_df (dataframe) - Returns a new dataframe with value added as column.
-    """
-
-    pass
