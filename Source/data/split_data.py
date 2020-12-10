@@ -15,7 +15,7 @@ def split_train_eval(data, split_ratio):
     
     Args:
         data (dataframe) - Original test data.
-        split_ratio (int) - Ratio for splitting dataset as training fraction.
+        split_ratio (int) - Ratio for splitting dataset as evaluation fraction.
         
     Returns:
         data_train (dataframe) - Dataframe with training data slice.
@@ -32,4 +32,16 @@ def split_train_eval(data, split_ratio):
     train_indices = shuffled_indices[train_set_size:]
     eval_indices = shuffled_indices[:train_set_size]
 
-    return data.iloc[train_indices], data.iloc[eval_indices]
+    # Create training and evaluation datasets
+    training_data = data.iloc[train_indices]
+    evaluation_data = data.iloc[eval_indices]
+
+    # Check length
+    print("Original Data Items:", len(data))
+    print("Training Data Items:", len(training_data))
+    print("Evaluation Data Items:", len(evaluation_data))
+
+    assert len(data) == (len(training_data) + len(evaluation_data))
+
+    # Return datasets
+    return training_data, evaluation_data
