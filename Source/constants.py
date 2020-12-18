@@ -1,7 +1,7 @@
 '''
-constants
+Constants
 
-Provides store of constants for use with project
+Provides store of constants for use with this project
 
 '''
 
