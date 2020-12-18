@@ -8,8 +8,7 @@ Helper routines for working with sklearn models
 # Module Importations
 from sklearn.externals import joblib
 import time
-
-project_code = 'YC'
+from Source import constants
 
 def name_model(model_type):
     """
@@ -27,6 +26,7 @@ def name_model(model_type):
     timestamp = time.strftime('%Y_%m_%d-%H_%M_%S')
     file_format = '.pkl'
 
+    project_code = constants.return_project_code()
     model_name = project_code + '_' + model_type + '_' + timestamp + file_format
 
     return model_name
@@ -44,7 +44,7 @@ def save_model(model, name):
         None.
     """
     # Create full filepath
-    directory = r'C:\Developer\electric_motor_thermal_modelling\Models'
+    directory = constants.return_model_save_path()
     filepath_full = directory + '\\' + name
     print("Save Path:", filepath_full) 
 
