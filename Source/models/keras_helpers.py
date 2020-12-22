@@ -86,6 +86,7 @@ def name_model(model_type):
     # Generate filename
     timestamp = time.strftime('%Y_%m_%d-%H_%M_%S')
     file_format = '.h5'
+    project_code = constants.return_project_code()
 
     model_name = project_code + '_' + model_type + '_' + timestamp + file_format
 
@@ -104,7 +105,7 @@ def make_save_string(file_name):
     """
     
     # Filepath for saved file
-    filepath = r'C:\Developer\electric_motor_thermal_modelling\Models'
+    filepath = constants.return_model_save_path()
 
     filepath_full = filepath + '\\' + file_name
 
@@ -124,8 +125,8 @@ def save_model(model, name):
     """
 
     # Create full filepath, including name
-    filepath = r'C:\Developer\electric_motor_thermal_modelling\Models'
-    filepath_full = filepath + '\\' + name + '.h5'
+    filename = name_model(name)
+    filepath_full = make_save_string(file_name)
     print("Save Path:", filepath_full)
 
     # Save model
