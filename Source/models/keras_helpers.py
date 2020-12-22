@@ -17,7 +17,7 @@ import keras
 import time
 from Source import constants
 
-def build_multilayer_perceptron(n_hidden = 2, n_neurons = 30, learning_rate = 3e-3, input_shape = [11]):
+def build_multilayer_perceptron(n_hidden = 2, n_neurons = 30, learning_rate = 3e-3, input_shape = [6]):
     """
     Build and compile multilayer perceptron model.
     ======================================
@@ -35,10 +35,8 @@ def build_multilayer_perceptron(n_hidden = 2, n_neurons = 30, learning_rate = 3e
 
     model = Sequential()
 
-    # , output_shape = [3]
-
     # Create input layer
-    #model.add(InputLayer(input_shape = input_shape))
+    model.add(InputLayer(input_shape = input_shape))
 
     # Add further layers
     for layer in range(n_hidden):
@@ -126,7 +124,7 @@ def save_model(model, name):
 
     # Create full filepath, including name
     filename = name_model(name)
-    filepath_full = make_save_string(file_name)
+    filepath_full = make_save_string(filename)
     print("Save Path:", filepath_full)
 
     # Save model
