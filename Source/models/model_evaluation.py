@@ -9,12 +9,11 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 
-def return_model_evaluation_stats(model_name, y_true, y_pred):
+def return_model_evaluation_stats(y_true, y_pred):
     """
     Return model evaluation metrics.
     ======================================
     Input:
-        model_name (string) - Name of model.
         y_true (array) - Untouched evaluation label data.
         y_pred (array) - Model prediction based on evaluation data.
     Output:
