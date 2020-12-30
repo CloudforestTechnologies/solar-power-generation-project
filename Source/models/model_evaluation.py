@@ -9,6 +9,28 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 
+def return_model_evaluation_stats(model_name, y_true, y_pred):
+    """
+    Return model evaluation metrics.
+    ======================================
+    Input:
+        model_name (string) - Name of model.
+        y_true (array) - Untouched evaluation label data.
+        y_pred (array) - Model prediction based on evaluation data.
+    Output:
+        rmse_eval (float) - Root Mean Squared Error.
+        mae_eval (float) - Mean Absolute Error.
+        r2_eval (float) - R2 Error. 
+    """
+
+    # Calculate performance metrics
+    rmse_eval = evaluate_rmse(y_true, y_pred)
+    mae_eval = evaluate_mae(y_true, y_pred)    
+    r2_eval = evaluate_r2(y_true, y_pred)
+
+    # return results
+    return rmse_eval, mae_eval, r2_eval
+
 def evaluate_model(model_name, y_true, y_pred):
     """
     Evaluate model using series of metrics.
