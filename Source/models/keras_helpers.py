@@ -18,7 +18,7 @@ import keras
 import time
 from Source import constants
 
-def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 3e-3, input_shape = [6]):
+def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 1e-3, input_shape = [6]):
     """
     Build and compile multilayer perceptron model.
     ======================================
@@ -51,7 +51,7 @@ def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 3e-
     model.add(Dense(1))
 
     # Compile model
-    optimiser = keras.optimizers.SGD(lr = learning_rate, momentum = 0.9)
+    optimiser = keras.optimizers.Adam(lr = learning_rate)
     model.compile(loss = "mse", optimizer = optimiser)
 
     return model
