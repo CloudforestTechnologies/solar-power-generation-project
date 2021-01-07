@@ -46,7 +46,7 @@ def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 3e-
     model.add(Dense(1))
 
     # Compile model
-    optimiser = keras.optimizers.SGD(lr = learning_rate)
+    optimiser = keras.optimizers.SGD(lr = learning_rate, momentum = 0.9)
     model.compile(loss = "mse", optimizer = optimiser)
 
     return model
