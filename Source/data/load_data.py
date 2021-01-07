@@ -41,6 +41,8 @@ def pickle_data(input_dataframe, filename):
         None.
     """
 
+    print("Pickling dataframe ...")
+
     # Build pickle string
     pickle_string = PICKLE_DIRECTORY + "/" + filename + ".pkl"
 
