@@ -9,6 +9,7 @@ Helper routines for building & training neural networks using keras API
 from keras.layers import Dense, InputLayer
 from keras.models import Sequential
 from keras.optimizers import Adam
+from keras.optimizers import SGD
 from keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
@@ -32,6 +33,10 @@ def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 3e-
     Output:
         model (Sequential) - A multilayer perceptron model designed for the data profile.
     """
+
+    # Print input values
+    print("Building Model ...")
+    print("Hidden Layers: {}, Neurons: {}, LR: {}".format(n_hidden, n_neurons, learning_rate))
 
     model = Sequential()
 
