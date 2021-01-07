@@ -61,13 +61,15 @@ def load_pickled_data(pickled_filename):
         dataframe (dataframe) - Dataframe loaded with data from pickle.
     """
 
+    print("Loading pickled dataframe started ...")
+
     # Build load string
     load_string = PICKLE_DIRECTORY + '/' + pickled_filename
 
     # Load data into dataframe
     df_loaded = pd.read_pickle(load_string)
 
-    print("Loaded pickled dataframe ...")
+    print("Loading pickled dataframe complete ...")
 
     # Return dataframe
     return df_loaded
