@@ -1,9 +1,11 @@
 # Solar Panel Output Modelling
 
-Data analysis and predictive models based on Indian solar power generation station data.
-
 Introduction
 ---
+
+Data analysis and predictive models based on Indian solar power generation station data.
+
+![Image of Motors](https://github.com/PMetcalf/electric_motor_thermal_modelling/blob/master/Miscellaneous/shutterstock_349645442.jpg)
 
 Project Objectives
 ---
