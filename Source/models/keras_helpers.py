@@ -9,6 +9,7 @@ Helper routines for building & training neural networks using keras API
 from keras.layers import Dense, InputLayer
 from keras.models import Sequential
 from keras.optimizers import Adam
+from keras.optimizers import RMSprop
 from keras.optimizers import SGD
 from keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.metrics import mean_absolute_error
@@ -51,7 +52,8 @@ def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 1e-
     model.add(Dense(1))
 
     # Compile model
-    optimiser = keras.optimizers.Adam(lr = learning_rate)
+    #optimiser = keras.optimizers.Adam(lr = learning_rate)
+    optimiser = keras.optimizers.RMSprop(lr = learning_rate)
     model.compile(loss = "mse", optimizer = optimiser)
 
     return model
