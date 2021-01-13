@@ -24,6 +24,20 @@ Project Objectives
 Exploring the Dataset
 ---
 
+Jupyter notebooks were used to conduct exploratory analysis on the dataset, first checking for missing values and incorrect datatypes, and then investigating relationships between parameters.
+
+Steps where taken to consolidate the individual datasets for performance and sensor readings for each plant, using dates and times a common reference.
+
+The datasets show a clear cyclic for the power generation profiles, so it should be possible to create an accurate model for predicting plant performance, given time of day and ambient conditions:
+
+[Insert image of plant data distribution]
+
+There are strong linear relationships between generated power and irradiation (as would be expected), and a slight inverse relationship between ambient temperature and power generation:
+
+[Insert image of correlation matrix]
+
+Whilst there was some individual variance between cell performance, it should be possible to develop models to identify abnormal cell performance.
+
 Predictive Modelling
 ---
 
