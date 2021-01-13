@@ -13,12 +13,12 @@ Data has been gathered at two solar power plants in India over a 34 day period. 
 
 The power generation datasets are gathered at the inverter level, and each inverter has multiple lines of solar panels attached to it. The sensor data is gathered at plant level, with a single array of sensors optimally placed.
 
+This project attempts to solve problems with power station operation: Can we predict power generation over the next couple of days? Can we identify the need for panel cleaning or maintenance? Can we identify faulty or suboptimally performing equipment? 
+
 Project Objectives
 ---
 
-Can we predict the power generation for next couple of days? - this allows for better grid management
-Can we identify the need for panel cleaning/maintenance?
-Can we identify faulty or suboptimally performing equipment?
+
 
 Exploring the Dataset
 ---
