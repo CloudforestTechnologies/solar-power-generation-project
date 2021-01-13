@@ -30,8 +30,16 @@ Predictive Modelling
 Installation & Setup
 ---
 
+The following packages are used within this project:
+
+numpy, pandas, matplotlib, seaborn, sklearn, keras.
+
 Cloning
 ---
 
+Clone this repository from: 
+
 Acknowledgements
 ---
+
+The kaggle project providing the data for this work can be accessed at: .
