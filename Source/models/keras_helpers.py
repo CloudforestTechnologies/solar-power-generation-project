@@ -8,12 +8,12 @@ Helper routines for building & training neural networks using keras API
 # Module Importations
 import tensorflow as tf
 import tensorflow.keras as keras
-from keras.layers import Dense, InputLayer
-from keras.models import Sequential
-from keras.optimizers import Adam
-from keras.optimizers import RMSprop
-from keras.optimizers import SGD
-from keras.wrappers.scikit_learn import KerasRegressor
+from tensorflow.keras.layers import Dense, InputLayer
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers import RMSprop
+from tensorflow.keras.optimizers import SGD
+from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
