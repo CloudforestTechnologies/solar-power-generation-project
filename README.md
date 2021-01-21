@@ -43,7 +43,7 @@ Predictive Modelling
 
 Machine learning models were initially developed to predict DC power generation for each plant (as DC Power, AC Power and electrical power output are all closely related). These models included regression models built with the sklearn module, and neural networks developed using Keras / Tensorflow.
 
-The best-performing model for DC power generation was a 6-layer sequential neural network, which produced a RMSE of 1215 
+The best-performing model for DC power generation was a 6-layer sequential neural network, which produced a RMSE of 1156 
 
 Installation & Setup
 ---
