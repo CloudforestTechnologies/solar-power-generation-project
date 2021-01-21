@@ -13,8 +13,11 @@ def return_project_code():
 def return_model_save_path():
     return r'C:\Developer\solar-power-generation-project\Models'
 
+def return_tensorboard_log_path():
 
+    root = os.getcwd()
+    branch = r"Models\TensorBoard"
 
-def return_root_dir():
+    path = os.path.join(root, branch)
     
-    return os.getcwd()
+    return path
