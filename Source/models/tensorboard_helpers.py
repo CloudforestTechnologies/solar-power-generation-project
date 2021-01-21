@@ -9,4 +9,22 @@ Helper routines for visualising model training performance using TensorBoard.
 import os
 import time
 
-os.curdir
+def get_run_logdir():
+    """
+    Return the log directory for a new run.
+    ======================================
+
+    Input:
+        None.
+
+    Output:
+        logdir (String) - Log directory with time stamp.
+    """
+
+    # Mint time stamp
+
+    # Create path
+
+    # Return directory
+
+    pass
