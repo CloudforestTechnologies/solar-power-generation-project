@@ -6,6 +6,7 @@ Helper routines for building & training neural networks using keras API
 '''
 
 # Module Importations
+import tensorflow.keras as keras
 from keras.layers import Dense, InputLayer
 from keras.models import Sequential
 from keras.optimizers import Adam
@@ -15,9 +16,11 @@ from keras.wrappers.scikit_learn import KerasRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-import keras
+#import keras
 import time
 from Source import constants
+
+print('keras version =', keras.__version__)
 
 def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 1e-3, input_shape = [6]):
     """
