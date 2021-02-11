@@ -6,6 +6,7 @@ This file supports data cleaning and preprocessing operations.
 
 # Module Importations
 import datetime
+from datetime import timedelta
 import pandas as pd
 
 def return_datetime(df_type, datetime_string):
@@ -97,15 +98,18 @@ def return_list_of_datetimes(start, end, period = 15):
         datetime_list (DateTime) - List of datetimes running from start to end
     """
 
-    # Convert period to datetime
+    # Convert period to time delta
+    period = timedelta(minutes = period)
 
     # Intialise list
+    list_of_datetimes = []
+    list_of_datetimes.append(start)
 
     # Add datetimes to list until end is reached
 
     # Return list
+    return(list_of_datetimes)
 
-    pass
 
 def return_cell_number(source_key):
     """Return Cell Number
