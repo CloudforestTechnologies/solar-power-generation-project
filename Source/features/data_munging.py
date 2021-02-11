@@ -49,7 +49,7 @@ def return_time_of_day(datetime_value):
     return time_of_day
 
 def return_start_end_date(df1, df2):
-   """Return Start and End Dates
+    """Return Start and End Dates
     ======================================
     Returns Start and End Dates from two dataframes.
     
@@ -63,16 +63,25 @@ def return_start_end_date(df1, df2):
     """
 
     # Retrieve earliest datetimes
+    df1_min = df1.DATE_TIME.min()
+    df2_min = df2.DATE_TIME.min()
 
-    # Compare dataframe times, select earliest
+    # Compare datetimes, select earliest
+    df_min = df1_min
+    if df_min > df2_min:
+        df_min = df2_min
 
     # Retrieve latest datetimes
+    df1_max = df1.DATE_TIME.max()
+    df2_max = df2.DATE_TIME.max()
 
     # Compare datetimes, select latest
+    df_max = df1_max
+    if df_max < df2_max:
+        df_max = df2_max
 
     # Return earliest and latest.
-
-    pass 
+    return df_min, df_max
 
 def return_cell_number(source_key):
     """Return Cell Number
