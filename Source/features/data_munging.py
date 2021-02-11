@@ -83,6 +83,30 @@ def return_start_end_date(df1, df2):
     # Return earliest and latest.
     return df_min, df_max
 
+def return_list_of_datetimes(start, end, period = 15):
+    """Return List of Datetimes
+    ======================================
+    Returns list of datetimes periodically spaced between start and end.
+    
+    Args:
+        start (DateTime) - First datetime in list
+        end (DateTime) - Last datetime in list
+        period (int) - Number of minutes between list entries
+        
+    Returns:
+        datetime_list (DateTime) - List of datetimes running from start to end
+    """
+
+    # Convert period to datetime
+
+    # Intialise list
+
+    # Add datetimes to list until end is reached
+
+    # Return list
+
+    pass
+
 def return_cell_number(source_key):
     """Return Cell Number
     ======================================
@@ -200,6 +224,7 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     """
 
     # Determine start & end dates for dataframe
+    start, end = return_start_end_date(generation_df, weather_df)
 
     # Create list of timestamps required as index 
 
