@@ -106,10 +106,13 @@ def return_list_of_datetimes(start, end, period = 15):
     list_of_datetimes.append(start)
 
     # Add datetimes to list until end is reached
+    datetime_entry = start
+    while datetime_entry < end:
+        datetime_entry += period
+        list_of_datetimes.append(datetime_entry)
 
     # Return list
     return(list_of_datetimes)
-
 
 def return_cell_number(source_key):
     """Return Cell Number
