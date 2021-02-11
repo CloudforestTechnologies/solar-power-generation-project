@@ -233,23 +233,22 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     # Determine start & end dates for dataframe
     start, end = return_start_end_date(generation_df, weather_df)
 
-    # Create list of timestamps required as index 
+    # Create list of timestamps required as index
+    timestamps = return_list_of_datetimes(start, end)
 
     # Initialise new dataframe with time stamps
+    df_combi = pd.DataFrame(timestamps)
 
     # Iterate over each cell key in dataframe, add generation data (using key and datetime)
 
     # Iterate over each cell key in dataframe, add weather data (using key and datetime)
 
-    # Create new column for amb temp using lambda on row and datetime
-    df_combi['AMB_TEMP'] = df_combi.apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME']), axis = 1)
-
-    # Create new column for mod temp using lambda on row and datetime
-    df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME']), axis = 1)
-
-    # Create new column for irradiation using lambda on row and datetime
-    df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME']), axis = 1)
-
+        # Create new column for amb temp using lambda on row and datetime
+    
+        # Create new column for mod temp using lambda on row and datetime
+    
+        # Create new column for irradiation using lambda on row and datetime
+    
     # Return dataframe
     return df_combi
 
