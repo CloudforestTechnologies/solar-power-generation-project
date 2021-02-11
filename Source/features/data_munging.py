@@ -236,10 +236,13 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     # Create list of timestamps required as index
     timestamps = return_list_of_datetimes(start, end)
 
-    # Initialise new dataframe with time stamps
+    # Create list of source keys from generation
+    source_keys = generation_df.SOURCE_KEY.unique()
+
+    # Initialise new dataframe with time stamps and source keys
     df_combi = pd.DataFrame(timestamps)
 
-    # Iterate over each cell key in dataframe, add generation data (using key and datetime)
+    # For each timestamp, for each source key, add generation data (using key and datetime)
 
     # Iterate over each cell key in dataframe, add weather data (using key and datetime)
 
