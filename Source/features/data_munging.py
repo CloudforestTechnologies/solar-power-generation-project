@@ -151,6 +151,41 @@ def return_irradiation(weather_df, datetime):
     # Return mod temp
     return irradiation
 
+def combine_generation_weather_dataframes2(generation_df, weather_df):
+    """Combine Generation & Weather Dataframes
+    ======================================
+    Returns a dataframe combining generation and weather data.
+    
+    Args:
+        generation_df (dataframe) - Dataframe containing generation data.
+        weather_df (dataframe) - Dataframe containing weather data.
+        
+    Returns:
+        combined_df (dataframe) - Dataframe containing combined datasets.
+    """
+
+    # Determine start & end dates for dataframe
+
+    # Create list of timestamps required as index 
+
+    # Initialise new dataframe with time stamps
+
+    # Iterate over each cell key in dataframe, add generation data (using key and datetime)
+
+    # Iterate over each cell key in dataframe, add weather data (using key and datetime)
+
+    # Create new column for amb temp using lambda on row and datetime
+    df_combi['AMB_TEMP'] = df_combi.apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME']), axis = 1)
+
+    # Create new column for mod temp using lambda on row and datetime
+    df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME']), axis = 1)
+
+    # Create new column for irradiation using lambda on row and datetime
+    df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME']), axis = 1)
+
+    # Return dataframe
+    return df_combi
+
 def combine_generation_weather_dataframes(generation_df, weather_df):
     """Combine Generation & Weather Dataframes
     ======================================
