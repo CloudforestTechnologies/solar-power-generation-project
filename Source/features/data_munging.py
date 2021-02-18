@@ -7,7 +7,9 @@ This file supports data cleaning and preprocessing operations.
 # Module Importations
 import datetime
 from datetime import timedelta
+import numpy as np
 import pandas as pd
+import numpy as np
 
 def return_datetime(df_type, datetime_string):
     """Return Datetime
@@ -145,6 +147,33 @@ def return_cell_number(source_key):
     # Return cell number
     return cell_number
 
+def return_dc_power(df, datetime, source_key):
+    """Return DC Power
+    ======================================
+    Returns dc power retrieved using a datetime and a source key.
+    
+    Args:
+        df (df) - DataFrame containing generation data.
+        datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
+        
+    Returns:
+        dc_power (float) - DC power corresponding to entry.
+    """
+
+    # Retrieve amb temp from weather df
+    try:
+        dc_power = df.loc[(df.DATE_TIME == datetime and df.SOURCE_KEY == source_key)].DC_POWER.values[0]
+
+    # Handle case of missing value
+    except:
+        dc_power = np.NaN
+
+    # Return amb temp
+    return dc_power
+
+
+
 def return_amb_temp(weather_df, datetime):
     """Return Ambient Temperature
     ======================================
@@ -250,7 +279,6 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     for time_stamp in timestamps:
         for source_key in source_keys:
             df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
-            #print("Added:", time_stamp, source_key)
 
     print("Initial Combined Dataframe:", df_combi.info())
 
