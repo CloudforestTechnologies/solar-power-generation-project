@@ -172,7 +172,7 @@ def return_dc_power(df, datetime, source_key):
     # Return data
     return dc_power
 
-def return_dc_power(df, datetime, source_key):
+def return_ac_power(df, datetime, source_key):
     """Return AC Power
     ======================================
     Returns ac power retrieved using a datetime and a source key.
@@ -196,6 +196,56 @@ def return_dc_power(df, datetime, source_key):
 
     # Return data
     return ac_power
+
+def return_daily_yield(df, datetime, source_key):
+    """Return Daily Yield
+    ======================================
+    Returns daily yield retrieved using a datetime and a source key.
+    
+    Args:
+        df (df) - DataFrame containing generation data.
+        datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
+        
+    Returns:
+        daily_yield (float) - Daily yield corresponding to entry.
+    """
+
+    # Retrieve data from original df
+    try:
+        daily_yield = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].DAILY_YIELD.values[0]
+
+    # Handle case of missing value
+    except:
+        daily_yield = np.NaN
+
+    # Return data
+    return daily_yield
+
+def return_total_yield(df, datetime, source_key):
+    """Return Total Yield
+    ======================================
+    Returns total yield retrieved using a datetime and a source key.
+    
+    Args:
+        df (df) - DataFrame containing generation data.
+        datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
+        
+    Returns:
+        total_yield (float) - Daily yield corresponding to entry.
+    """
+
+    # Retrieve data from original df
+    try:
+        total_yield = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].TOTAL_YIELD.values[0]
+
+    # Handle case of missing value
+    except:
+        total_yield = np.NaN
+
+    # Return data
+    return total_yield
 
 def return_amb_temp(weather_df, datetime):
     """Return Ambient Temperature
@@ -306,13 +356,16 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     print("Initial Combined Dataframe:", df_combi.info())
 
     # Create new column for DC Power using lambda on row and datetime
-    df_combi['DC_POWER'] = df_combi.apply(lambda row: return_dc_power(df_plant1_gen, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+    df_combi['DC_POWER'] = df_combi.apply(lambda row: return_dc_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for AC Power using lambda on row and datetime
+    df_combi['AC_POWER'] = df_combi.apply(lambda row: return_ac_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for Daily Yield using lambda on row and datetime
+    df_combi['DAILY_YIELD'] = df_combi.apply(lambda row: return_daily_yield(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for Total Yield using lambda on row and datetime
+    df_combi['TOTAL_YIELD'] = df_combi.apply(lambda row: return_total_yield(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for Amb Temp using lambda on row and datetime
     
