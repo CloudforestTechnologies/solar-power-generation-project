@@ -161,18 +161,41 @@ def return_dc_power(df, datetime, source_key):
         dc_power (float) - DC power corresponding to entry.
     """
 
-    # Retrieve amb temp from weather df
+    # Retrieve data from original df
     try:
-        dc_power = df.loc[(df.DATE_TIME == datetime and df.SOURCE_KEY == source_key)].DC_POWER.values[0]
+        dc_power = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].DC_POWER.values[0]
 
     # Handle case of missing value
     except:
         dc_power = np.NaN
 
-    # Return amb temp
+    # Return data
     return dc_power
 
+def return_dc_power(df, datetime, source_key):
+    """Return AC Power
+    ======================================
+    Returns ac power retrieved using a datetime and a source key.
+    
+    Args:
+        df (df) - DataFrame containing generation data.
+        datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
+        
+    Returns:
+        ac_power (float) - AC power corresponding to entry.
+    """
 
+    # Retrieve data from original df
+    try:
+        ac_power = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].AC_POWER.values[0]
+
+    # Handle case of missing value
+    except:
+        ac_power = np.NaN
+
+    # Return data
+    return ac_power
 
 def return_amb_temp(weather_df, datetime):
     """Return Ambient Temperature
@@ -282,23 +305,24 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
 
     print("Initial Combined Dataframe:", df_combi.info())
 
-    # Iterate over each cell key in dataframe, add remaining data (using key and datetime)
+    # Create new column for DC Power using lambda on row and datetime
+    df_combi['DC_POWER'] = df_combi.apply(lambda row: return_dc_power(df_plant1_gen, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
-        # Create new column for DC Power using lambda on row and datetime
+    # Create new column for AC Power using lambda on row and datetime
 
-        # Create new column for AC Power using lambda on row and datetime
+    # Create new column for Daily Yield using lambda on row and datetime
 
-        # Create new column for Daily Yield using lambda on row and datetime
+    # Create new column for Total Yield using lambda on row and datetime
 
-        # Create new column for Total Yield using lambda on row and datetime
-
-        # Create new column for Amb Temp using lambda on row and datetime
+    # Create new column for Amb Temp using lambda on row and datetime
     
-        # Create new column for Mod Temp using lambda on row and datetime
+    # Create new column for Mod Temp using lambda on row and datetime
     
-        # Create new column for Irradiation using lambda on row and datetime
+    # Create new column for Irradiation using lambda on row and datetime
     
     # Return dataframe
+    print("Final Combined Dataframe:", df_combi.info())
+
     return df_combi
 
 def combine_generation_weather_dataframes(generation_df, weather_df):
