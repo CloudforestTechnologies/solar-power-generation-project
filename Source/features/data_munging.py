@@ -232,27 +232,43 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
 
     # Determine start & end dates for dataframe
     start, end = return_start_end_date(generation_df, weather_df)
+    print("Start Date:", start)
+    print("End Date:", start)
 
-  # Create list of timestamps required as index
+    # Create list of timestamps required as index
     timestamps = return_list_of_datetimes(start, end)
-
+    
     # Determine plant number
+    plant_no = generation_df.loc[(generation_df.DATE_TIME == start)].PLANT_ID.values[0]
 
     # Create list of source keys from generation
     source_keys = generation_df.SOURCE_KEY.unique()
 
-    # Initialise new dataframe with time stamps and source keys
-    df_combi = pd.DataFrame(timestamps)
+    # Initialise new dataframe with time stamp, plant and source keys
+    df_combi = = pd.DataFrame(columns = ['DATE_TIME', 'PLANT_ID', 'SOURCE_KEY'])
 
-    # For each timestamp, for each source key, add generation data (using key and datetime)
+    for time_stamp in timestamps:
+        for source_key in source_keys:
+            df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
+            print("Added:", time_stamp, source_key)
 
-    # Iterate over each cell key in dataframe, add weather data (using key and datetime)
+    print("Initial Combined Dataframe:", my_df.info())
 
-        # Create new column for amb temp using lambda on row and datetime
+    # Iterate over each cell key in dataframe, add remaining data (using key and datetime)
+
+        # Create new column for DC Power using lambda on row and datetime
+
+        # Create new column for AC Power using lambda on row and datetime
+
+        # Create new column for Daily Yield using lambda on row and datetime
+
+        # Create new column for Total Yield using lambda on row and datetime
+
+        # Create new column for Amb Temp using lambda on row and datetime
     
-        # Create new column for mod temp using lambda on row and datetime
+        # Create new column for Mod Temp using lambda on row and datetime
     
-        # Create new column for irradiation using lambda on row and datetime
+        # Create new column for Irradiation using lambda on row and datetime
     
     # Return dataframe
     return df_combi
