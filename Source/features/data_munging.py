@@ -245,14 +245,14 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     source_keys = generation_df.SOURCE_KEY.unique()
 
     # Initialise new dataframe with time stamp, plant and source keys
-    df_combi = = pd.DataFrame(columns = ['DATE_TIME', 'PLANT_ID', 'SOURCE_KEY'])
+    df_combi = pd.DataFrame(columns = ['DATE_TIME', 'PLANT_ID', 'SOURCE_KEY'])
 
     for time_stamp in timestamps:
         for source_key in source_keys:
             df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
             print("Added:", time_stamp, source_key)
 
-    print("Initial Combined Dataframe:", my_df.info())
+    print("Initial Combined Dataframe:", df_combi.info())
 
     # Iterate over each cell key in dataframe, add remaining data (using key and datetime)
 
