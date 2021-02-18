@@ -247,14 +247,15 @@ def return_total_yield(df, datetime, source_key):
     # Return data
     return total_yield
 
-def return_amb_temp(weather_df, datetime):
+def return_amb_temp(df, datetime, source_key):
     """Return Ambient Temperature
     ======================================
     Returns an ambient temperature retrieved using a datetime key.
     
     Args:
-        weather_df (df) - DataFrame containing weather data.
+        df (df) - DataFrame containing weather data.
         datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
         
     Returns:
         amb_temp (float64) - Ambient temperature corresponding to datetime.
@@ -262,23 +263,23 @@ def return_amb_temp(weather_df, datetime):
 
     # Retrieve amb temp from weather df
     try:
-        amb_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].AMBIENT_TEMPERATURE.values[0]
+        amb_temp = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].AMBIENT_TEMPERATURE.values[0]
 
     except:
-        amb_temp = 28
-        print(datetime, amb_temp)
+        amb_temp = np.NaN
 
     # Return amb temp
     return amb_temp
 
-def return_mod_temp(weather_df, datetime):
+def return_mod_temp(df, datetime, source_key):
     """Return Module Temperature
     ======================================
     Returns a module temperature value retrieved using a datetime key.
     
     Args:
-        weather_df (df) - DataFrame containing weather data.
+        df (df) - DataFrame containing weather data.
         datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
         
     Returns:
         mod_temp (float64) - Module temperature corresponding to datetime.
@@ -286,23 +287,23 @@ def return_mod_temp(weather_df, datetime):
 
     # Retrieve module temperature from weather df
     try:
-        mod_temp = weather_df.loc[(weather_df.DATE_TIME == datetime)].MODULE_TEMPERATURE.values[0]
+        mod_temp = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].MODULE_TEMPERATURE.values[0]
 
     except:
-        mod_temp = 22
-        print(datetime, mod_temp)
+        mod_temp = np.NaN
 
     # Return module temperature
     return mod_temp
 
-def return_irradiation(weather_df, datetime):
+def return_irradiation(df, datetime, source_key):
     """Return Irradiation
     ======================================
     Returns a module irradiation value retrieved using a datetime key.
     
     Args:
-        weather_df (df) - DataFrame containing weather data.
+        df (df) - DataFrame containing weather data.
         datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
         
     Returns:
         irradiation (float64) - Irradiation corresponding to datetime.
@@ -310,11 +311,10 @@ def return_irradiation(weather_df, datetime):
 
     # Retrieve mod temp from weather df
     try:
-        irradiation = weather_df.loc[(weather_df.DATE_TIME == datetime)].IRRADIATION.values[0]
+        irradiation = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].IRRADIATION.values[0]
 
     except:
-        irradiation = 0
-        print(datetime, irradiation)
+        irradiation = np.NaN
 
     # Return mod temp
     return irradiation
@@ -367,11 +367,14 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     # Create new column for Total Yield using lambda on row and datetime
     df_combi['TOTAL_YIELD'] = df_combi.apply(lambda row: return_total_yield(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
-    # Create new column for Amb Temp using lambda on row and datetime
-    
-    # Create new column for Mod Temp using lambda on row and datetime
-    
-    # Create new column for Irradiation using lambda on row and datetime
+    # Create new column for amb temp using lambda on row and datetime
+    df_combi['AMB_TEMP'] = df_combi.apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+
+    # Create new column for mod temp using lambda on row and datetime
+    df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+
+    # Create new column for irradiation using lambda on row and datetime
+    df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
     
     # Return dataframe
     print("Final Combined Dataframe:", df_combi.info())
