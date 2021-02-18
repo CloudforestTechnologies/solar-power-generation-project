@@ -233,8 +233,10 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     # Determine start & end dates for dataframe
     start, end = return_start_end_date(generation_df, weather_df)
 
-    # Create list of timestamps required as index
+  # Create list of timestamps required as index
     timestamps = return_list_of_datetimes(start, end)
+
+    # Determine plant number
 
     # Create list of source keys from generation
     source_keys = generation_df.SOURCE_KEY.unique()
