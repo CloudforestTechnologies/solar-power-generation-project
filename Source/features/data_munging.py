@@ -172,6 +172,31 @@ def return_dc_power(df, datetime, source_key):
     # Return data
     return dc_power
 
+def return_dc_power(df, datetime, source_key):
+    """Return DC Power
+    ======================================
+    Returns dc power retrieved using a datetime and a source key.
+    
+    Args:
+        df (df) - DataFrame containing generation data.
+        datetime (datetime) - Datetime as datetime object.
+        source_key (string) - Source key for cell.
+        
+    Returns:
+        dc_power (float) - DC power corresponding to entry.
+    """
+
+    # Retrieve data from original df
+    try:
+        dc_power = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].DC_POWER.values[0]
+
+    # Handle case of missing value
+    except:
+        dc_power = np.NaN
+
+    # Return data
+    return dc_power
+
 def return_ac_power(df, datetime, source_key):
     """Return AC Power
     ======================================
@@ -349,15 +374,17 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     # Initialise new dataframe with time stamp, plant and source keys
     df_combi = pd.DataFrame(columns = ['DATE_TIME', 'PLANT_ID', 'SOURCE_KEY'])
 
-    for time_stamp in timestamps:
+    # Initialise loading bar
+    tqdm.pandas()
+
+    # Populate datetime, plant ID and source key data
+    print('\n', 'Creating initial dataframe ...')
+    for time_stamp in tqdm(timestamps):
         for source_key in source_keys:
             df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
 
     print("Initial Combined Dataframe:", df_combi.info())
     
-    # Initialise loading bar
-    tqdm.pandas()
-
     # Create new column for DC Power using lambda on row and datetime
     print('\n', 'Adding DC Power ...')
     df_combi['DC_POWER'] = df_combi.progress_apply(lambda row: return_dc_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
