@@ -363,21 +363,27 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     df_combi['DC_POWER'] = df_combi.progress_apply(lambda row: return_dc_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for AC Power using lambda on row and datetime
-    df_combi['AC_POWER'] = df_combi.apply(lambda row: return_ac_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+    print('Adding AC Power ...')
+    df_combi['AC_POWER'] = df_combi.progress_apply(lambda row: return_ac_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for Daily Yield using lambda on row and datetime
+    print('Adding Daily Yield ...')
     df_combi['DAILY_YIELD'] = df_combi.apply(lambda row: return_daily_yield(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for Total Yield using lambda on row and datetime
+    print('Adding Total Yield ...')
     df_combi['TOTAL_YIELD'] = df_combi.apply(lambda row: return_total_yield(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for amb temp using lambda on row and datetime
+    print('Adding Ambient Temp ...')
     df_combi['AMB_TEMP'] = df_combi.apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for mod temp using lambda on row and datetime
+    print('Adding Module Temp ...')
     df_combi['MOD_TEMP'] = df_combi.apply(lambda row: return_mod_temp(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for irradiation using lambda on row and datetime
+    print('Adding Irradiation ...')
     df_combi['IRRADIATION'] = df_combi.apply(lambda row: return_irradiation(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
     
     # Return dataframe
