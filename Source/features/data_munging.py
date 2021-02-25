@@ -272,7 +272,7 @@ def return_total_yield(df, datetime, source_key):
     # Return data
     return total_yield
 
-def return_amb_temp(df, datetime, source_key):
+def return_amb_temp(df, datetime):
     """Return Ambient Temperature
     ======================================
     Returns an ambient temperature retrieved using a datetime key.
@@ -280,7 +280,6 @@ def return_amb_temp(df, datetime, source_key):
     Args:
         df (df) - DataFrame containing weather data.
         datetime (datetime) - Datetime as datetime object.
-        source_key (string) - Source key for cell.
         
     Returns:
         amb_temp (float64) - Ambient temperature corresponding to datetime.
@@ -288,12 +287,13 @@ def return_amb_temp(df, datetime, source_key):
 
     # Retrieve amb temp from weather df
     try:
-        amb_temp = df.loc[np.logical_and(df.DATE_TIME == datetime, df.SOURCE_KEY == source_key)].AMBIENT_TEMPERATURE.values[0]
+        amb_temp = df.loc[df.DATE_TIME == datetime].AMBIENT_TEMPERATURE.values[0]
 
     except:
         amb_temp = np.NaN
 
     # Return amb temp
+    print('Returned:', amb_temp)
     return amb_temp
 
 def return_mod_temp(df, datetime, source_key):
@@ -362,8 +362,6 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     print("Start Date:", start)
     print("End Date:", end)
 
-    #print(weather_df.info())
-
     # Create list of timestamps required as index
     timestamps = return_list_of_datetimes(start, end)
     
@@ -406,7 +404,7 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
 
     # Create new column for amb temp using lambda on row and datetime
     print('\n', 'Adding Ambient Temp ...')
-    df_combi['AMB_TEMP'] = df_combi.progress_apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+    df_combi['AMB_TEMP'] = df_combi.progress_apply(lambda row: return_amb_temp(weather_df, row['DATE_TIME']), axis = 1)
 
     # Create new column for mod temp using lambda on row and datetime
     print('\n', 'Adding Module Temp ...')
