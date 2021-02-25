@@ -9,7 +9,7 @@ import datetime
 from datetime import timedelta
 import numpy as np
 import pandas as pd
-import numpy as np
+from tqdm._tqdm_notebook import tqdm_notebook
 
 def return_datetime(df_type, datetime_string):
     """Return Datetime
@@ -354,9 +354,12 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
             df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
 
     print("Initial Combined Dataframe:", df_combi.info())
+    
+    # Initialise loading bar
+    tqdm_notebook.pandas()
 
     # Create new column for DC Power using lambda on row and datetime
-    df_combi['DC_POWER'] = df_combi.apply(lambda row: return_dc_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
+    df_combi['DC_POWER'] = df_combi.progress_apply(lambda row: return_dc_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
 
     # Create new column for AC Power using lambda on row and datetime
     df_combi['AC_POWER'] = df_combi.apply(lambda row: return_ac_power(generation_df, row['DATE_TIME'], row['SOURCE_KEY']), axis = 1)
