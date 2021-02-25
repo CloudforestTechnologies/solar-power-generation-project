@@ -362,6 +362,8 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
     print("Start Date:", start)
     print("End Date:", end)
 
+    #print(weather_df.info())
+
     # Create list of timestamps required as index
     timestamps = return_list_of_datetimes(start, end)
     
@@ -383,7 +385,8 @@ def combine_generation_weather_dataframes2(generation_df, weather_df):
         for source_key in source_keys:
             df_combi = df_combi.append({'DATE_TIME' : time_stamp, 'PLANT_ID': plant_no, 'SOURCE_KEY' : source_key}, ignore_index = True)
 
-    print("Initial Combined Dataframe:", df_combi.info())
+    print("Initial Combined Dataframe:")
+    print(df_combi.info())
     
     # Create new column for DC Power using lambda on row and datetime
     print('\n', 'Adding DC Power ...')
