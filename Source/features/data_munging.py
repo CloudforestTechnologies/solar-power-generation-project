@@ -11,13 +11,14 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-def return_datetime(df_type, datetime_string):
+def return_datetime(df_type, plant, datetime_string):
     """Return Datetime
     ======================================
     Returns a datetime based on date and time from data instance.
     
     Args:
         df_type (str) - DataFrame type ('generation' or 'weather') to assist with selecting parse method.
+        plant (int) - Plant 1 or Plant 2.
         datetime_string (str) - Datetime as a string object.
         
     Returns:
@@ -25,10 +26,17 @@ def return_datetime(df_type, datetime_string):
     """
 
     # Convert to datetime
-    if df_type == 'generation':
-        datetime_date = datetime.datetime.strptime(datetime_string, '%d-%m-%Y %H:%M')
-    elif df_type == 'weather':
-        datetime_date = datetime.datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
+    if plant == 1:
+        if df_type == 'generation':
+            datetime_date = datetime.datetime.strptime(datetime_string, '%d-%m-%Y %H:%M')
+        elif df_type == 'weather':
+            datetime_date = datetime.datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
+
+    if plant == 2:
+        if df_type == 'generation':
+            datetime_date = datetime.datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
+        elif df_type == 'weather':
+            datetime_date = datetime.datetime.strptime(datetime_string, '%Y-%m-%d %H:%M:%S')
 
     # Return datetime
     return datetime_date
