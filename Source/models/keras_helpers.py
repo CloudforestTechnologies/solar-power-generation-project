@@ -24,7 +24,7 @@ from Source import constants
 print('[keras_helpers]Tensorflow version:', tf.__version__)
 print('[keras_helpers]keras version =', keras.__version__)
 
-def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 1e-3, input_shape = [6]):
+def build_multilayer_perceptron(n_hidden = 2, n_neurons = 6, learning_rate = 1e-3, input_shape = [3]):
     """
     Build and compile multilayer perceptron model.
     ======================================
