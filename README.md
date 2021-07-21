@@ -3,13 +3,13 @@
 Introduction
 ---
 
-This data analytics and predictive modelling project investigates the performance and behaviour of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
+This data analysis and modelling project investigates the performance and behaviour of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
 
-The project starts with an exploration of the datasets, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
+The project starts with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
 
 ![Image of Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
 
-Data has been gathered at two Indian solar power plants over a 34 day period. There are two datasets for each plant: One for power generation, and one for environmental sensor readings. 
+Data has been gathered at two Indian solar power plants over a 34 day period. There are two datasets for each plant: One for power generation, and one for environmental sensor readings (temperatures, irradiation). 
 
 The power generation datasets are gathered at the inverter level, and each inverter has multiple lines of solar panels attached to it. The sensor data is gathered at plant level, with a single array of optimally-placed sensors.
 
@@ -18,8 +18,9 @@ This project attempts to provide solutions for power station operation: Can we p
 Project Objectives
 ---
 
-1. Develop predictive models for solar power generation based on historic data.
-2. Develop predictive models that can identify solar panels that are faulty or in need of maintenance.
+1. Develop solutions for identifying panels that are faulty or may need maintenance.
+2. Develop solutions for identifying when panels may collectively be in need of cleaning.
+3. Develop solutions that can predict solar panel output from current conditions (and potentially forecast future output).
 
 Exploring the Dataset
 ---
@@ -28,22 +29,25 @@ Jupyter notebooks were used to conduct exploratory analysis on the dataset, firs
 
 Steps where taken to consolidate the individual datasets for performance and sensor readings for each plant, using dates and times a common reference.
 
-The datasets show a clear cyclic for the power generation profiles, so it should be possible to create an accurate model for predicting plant performance, given time of day and ambient conditions:
+The datasets show a clear cyclic profile for the power generation profiles, so it should be possible to create an accurate model for predicting plant performance, given time of day and ambient conditions:
 
 [Insert image of plant data distribution]
 
-There are strong linear relationships between generated power and irradiation (as would be expected), and a slight inverse relationship between ambient temperature and power generation:
+Some data was found to be incorrect, whilst some time steps were missing associated data. In some cases, obviously erroneous data was set to zero (for example, power generation during hours of darkness), and in other cases missing values were filled in via interpolation.
 
-[Insert image of correlation matrix]
+To help with understanding the data, and to possibly support clustering techniques, features were engineered at an hourly level and added to the dataset.
 
-Whilst there was some individual variance between cell performance, it should be possible to develop models to identify abnormal cell performance.
-
-Predictive Modelling
+Identifying Panels in Need of Cleaning or Maintenance
 ---
 
 Machine learning models were initially developed to predict DC power generation for each plant (as DC Power, AC Power and electrical power output are all closely related). These models included regression models built with the sklearn module, and neural networks developed using Keras / Tensorflow.
 
 The best-performing model for DC power generation was a 6-layer sequential neural network, which produced a RMSE of 1156 
+
+Predicting Power Output
+---
+
+
 
 Installation & Setup
 ---
