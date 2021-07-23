@@ -42,14 +42,14 @@ To help with understanding the data, and to possibly support clustering techniqu
 Identifying Panels in Need of Cleaning or Maintenance
 ---
 
-Machine learning models were initially developed to predict DC power generation for each plant (as DC Power, AC Power and electrical power output are all closely related). These models included regression models built with the sklearn module, and neural networks developed using Keras / Tensorflow.
+How can faulty panels be identified, or those in need of maintenance?
 
-The best-performing model for DC power generation was a 6-layer sequential neural network, which produced a RMSE of 1156 
+Assumptions on the operational behaviour and failure characteristics of solar panels enabled identification strategies to be developed - Specifically, panels identified to be producing a lower output than their peers were classes as faulty, whilst groups of panels performing collectively worse than predicted indicated a need for cleaning. 
 
 Predicting Power Output
 ---
 
-
+Machine learning models were initially developed to predict DC power generation for each plant (as DC Power, AC Power and electrical power output are all closely related). These models included regression models built with the sklearn module, and neural networks developed using Keras / Tensorflow.
 
 Installation & Setup
 ---
