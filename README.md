@@ -7,11 +7,9 @@ This modelling/analysis project investigates the performance and behaviour of so
 
 Solar panel arrays have a high initial capital cost, repaid by generating stable quantities of electricity from the sun, and investment cases are predicated on being able to generate a certain amount of power to make the plant cost-effective. 
 
-Solar panels should follow predictable patterns of behaviour, once weather, solar load and degradation rates are understood.
+![Image of Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
 
 The project starts with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
-
-![Image of Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
 
 Data has been gathered at two Indian solar power plants over a 34 day period. There are two datasets for each plant: One for power generation, and one for environmental sensor readings (temperatures, irradiation). 
 
@@ -35,7 +33,7 @@ Steps where taken to consolidate the individual datasets for performance and sen
 
 The datasets show a clear cyclic profile for the power generation profiles, so it should be possible to create an accurate model for predicting plant performance, given time of day and ambient conditions:
 
-[Insert image of plant data distribution]
+![Irradiation Time-Series for Plant 1](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Irradiation_Scatter_Plant1_2021_07_12-16_57_15.jpg)
 
 Some data was found to be incorrect, whilst some time steps were missing associated data. In some cases, obviously erroneous data was set to zero (for example, power generation during hours of darkness), and in other cases missing values were filled in via interpolation.
 
