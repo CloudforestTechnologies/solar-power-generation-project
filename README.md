@@ -7,7 +7,7 @@ This modelling/analysis project investigates the performance and behaviour of so
 
 Solar panel arrays have a high initial capital cost, repaid by generating stable quantities of electricity from the sun, and investment cases are predicated on being able to generate a certain amount of power to make the plant cost-effective. 
 
-![Image of Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
+![Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
 
 The project starts with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
 
@@ -52,7 +52,7 @@ A good inverter should be consistently productive, so features related to consis
 
 When many panels are collectively producing less power output than predicted for a given level of irradiation, it may be that the panels need cleaning. A simple linear regression model can be trained to forecast output for a given set of conditions, and the number of 'sub-prediction' real values can be measured:
 
-![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Plant1_Avg_DC_Power_Prediction_2021_07_14-10_49_17.jpg)
+![Plant 1 Forecast v. Actual Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Plant1_Avg_DC_Power_Prediction_2021_07_14-10_49_17.jpg)
 
 This effect seems to be born out in the datasets, where mean output gradually drops versus predicted output and then seemingly recovers, possibly as a result of a cleaning operation.
 
@@ -67,11 +67,11 @@ Machine learning models were initially developed to predict DC power generation 
 
 Linear regression models developed a tendency to underpredict data at higher power outputs, probably as a result of faulty (underperforming) panels being present in the training data:
 
-![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_LinReg_Plant1_Error_Plot_2021_06_08-10_10_47.jpg)
+![Plant 1 Linear Regression Prediction Error](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_LinReg_Plant1_Error_Plot_2021_06_08-10_10_47.jpg)
 
 Interestingly, regression models trained using neural networks trained on the same datasets seemed to avoid this effect, although RMSE/MAE performance was comparable to similar linear regression models (prediction errors were spread more evenly between over and under prediction):
 
-![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/tree/master/Reports/Figures/WJ_MLP_Opt_Pt1_Prediction_Error_2021_07_14-11_18_29.jpg)
+![Plant 1 NN Prediction Error](https://github.com/PMetcalf/solar-power-generation-project/tree/master/Reports/Figures/WJ_MLP_Opt_Pt1_Prediction_Error_2021_07_14-11_18_29.jpg)
 
 Overall, the models are flawed as absolute predictors, but useful indicators. 
 
