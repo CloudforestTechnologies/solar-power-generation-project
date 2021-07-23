@@ -59,7 +59,21 @@ This effect seems to be born out in the datasets, where mean output gradually dr
 Predicting Power Output
 ---
 
+Predicting expected generation for a given set of conditions can be useful for grid management, fault detection and cleaning, and so the project included developing predictive models using a couple of different techniques.
+
+In an expanded scenario, historical and projected weather data would be available and would enable the use of models to forward-project power output ahead of time. In the absence of this data, modelling is largely limited to making predictions based on current conditions. 
+
 Machine learning models were initially developed to predict DC power generation for each plant (as DC Power, AC Power and electrical power output are all closely related). These models included regression models built with the sklearn module, and neural networks developed using Keras / Tensorflow.
+
+Linear regression models developed a tendency to underpredict data at higher power outputs, probably as a result of faulty (underperforming) panels being present in the training data:
+
+![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_LinReg_Plant1_Error_Plot_2021_06_08-10_10_47.jpg)
+
+Interestingly, regression models trained using neural networks trained on the same datasets seemed to avoid this effect, although RMSE/MAE performance was comparable to similar linear regression models (prediction errors were spread more evenly between over and under prediction):
+
+![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_MLP_Opt_Pt1_Prediction_Error_2021_07_14-11_18_29.jpg)
+
+Overall, the models are flawed as absolute predictors, but useful indicators. 
 
 Installation & Setup
 ---
