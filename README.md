@@ -3,7 +3,11 @@
 Introduction
 ---
 
-This data analysis and modelling project investigates the performance and behaviour of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
+This modelling/analysis project investigates the performance and behaviour of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
+
+Solar panel arrays have a high initial capital cost, repaid by generating stable quantities of electricity from the sun, and investment cases are predicated on being able to generate a certain amount of power to make the plant cost-effective. 
+
+Solar panels should follow predictable patterns of behaviour, once weather, solar load and degradation rates are understood.
 
 The project starts with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
 
