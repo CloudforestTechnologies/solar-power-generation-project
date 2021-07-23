@@ -29,22 +29,27 @@ Exploring the Dataset
 
 Jupyter notebooks were used to conduct exploratory analysis on the dataset, first checking for missing values and incorrect datatypes, and then investigating relationships between parameters.
 
-Steps where taken to consolidate the individual datasets for performance and sensor readings for each plant, using dates and times a common reference.
+Steps where taken to consolidate the individual datasets for performance and sensor readings for each plant, using dates and times as a common data reference.
 
 The datasets show a clear cyclic profile for the power generation profiles, so it should be possible to create an accurate model for predicting plant performance, given time of day and ambient conditions:
 
 ![Irradiation Time-Series for Plant 1](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Irradiation_Scatter_Plant1_2021_07_12-16_57_15.jpg)
 
-Some data was found to be incorrect, whilst some time steps were missing associated data. In some cases, obviously erroneous data was set to zero (for example, power generation during hours of darkness), and in other cases missing values were filled in via interpolation.
+Some data was found to be incorrect, whilst some time steps were missing expected datapoints. In some cases, obviously erroneous data was set to zero (for example, power generation during hours of darkness), and in other cases missing values were generated via interpolation.
 
-To help with understanding the data, and to possibly support clustering techniques, features were engineered at an hourly level and added to the dataset.
+To help with understanding the data, and to possibly support clustering techniques, summary features were engineered at a daily and hourly level, and added to the dataset.
 
 Identifying Panels in Need of Cleaning or Maintenance
 ---
 
 How can faulty panels be identified, or those in need of maintenance?
 
-Assumptions on the operational behaviour and failure characteristics of solar panels enabled identification strategies to be developed - Specifically, panels identified to be producing a lower output than their peers were classes as faulty, whilst groups of panels performing collectively worse than predicted indicated a need for cleaning. 
+Assumptions on the operational behaviour and failure characteristics of solar panels enabled identification strategies to be developed.
+
+A good inverter should be consistently productive, so features related to consistency and productivity can create insights into failing panels. Panels with large numbers of zero outputs compared to peers could well be in need of a maintenance intervention:
+
+![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Plant1_Avg_Daily_Yield_Zero_Output_2021_07_14-10_48_21.jpg)
+
 
 Predicting Power Output
 ---
