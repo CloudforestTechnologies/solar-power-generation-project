@@ -50,6 +50,11 @@ A good inverter should be consistently productive, so features related to consis
 
 ![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Plant1_Avg_Daily_Yield_Zero_Output_2021_07_14-10_48_21.jpg)
 
+When many panels are collectively producing less power output than predicted for a given level of irradiation, it may be that the panels need cleaning. A simple linear regression model can be trained to forecast output for a given set of conditions, and the number of 'sub-prediction' real values can be measured:
+
+![Plant 1 Daily Yield - Zero Output](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_Plant1_Avg_DC_Power_Prediction_2021_07_14-10_49_17.jpg)
+
+This effect seems to be born out in the datasets, where mean output gradually drops versus predicted output and then seemingly recovers, possibly as a result of a cleaning operation.
 
 Predicting Power Output
 ---
