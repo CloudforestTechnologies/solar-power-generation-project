@@ -71,7 +71,7 @@ Linear regression models developed a tendency to underpredict data at higher pow
 
 Interestingly, regression models trained using neural networks trained on the same datasets seemed to avoid this effect, although RMSE/MAE performance was comparable to similar linear regression models (prediction errors were spread more evenly between over and under prediction):
 
-![Plant 1 NN Prediction Error](https://github.com/PMetcalf/solar-power-generation-project/tree/master/Reports/Figures/WJ_MLP_Opt_Pt1_Prediction_Error_2021_07_14-11_18_29.png)
+![Plant 1 NN Prediction Error](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Reports/Figures/WJ_MLP_Opt_Pt1_Prediction_Error_2021_07_14-11_18_29.png)
 
 Overall, the models are flawed as absolute predictors, but useful indicators. 
 
