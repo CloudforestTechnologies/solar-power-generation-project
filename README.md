@@ -85,11 +85,9 @@ numpy, pandas, matplotlib, seaborn, sklearn, keras.
 Cloning
 ---
 
-Clone this repository from: 
+Clone this repository from: https://github.com/PMetcalf/solar-power-generation-project.git
 
 Acknowledgements
 ---
 
-The kaggle project providing the data for this work can be accessed at: .
-
-Some approaches to feature engineering drew inspiration from this data science project on Kaggle by :
+The kaggle project providing the data for this work can be accessed from https://www.kaggle.com/anikannal/solar-power-generation-data.
