@@ -3,19 +3,19 @@
 Introduction
 ---
 
-This modelling/analysis project investigates the performance and behaviour of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
+This modelling project analyses the performance of solar panels generating electricity for the Indian Power Network, using datasets from two generation plants made available on Kaggle.
 
-Solar panel arrays have a high initial capital cost, repaid by generating stable quantities of electricity from the sun, and investment cases are predicated on being able to generate a certain amount of power to make the plant cost-effective. 
+Solar panel arrays have a high initial capital cost, repaid by generating stable quantities of electricity from incident solar radiation, and investment cases are predicated on being able to generate a certain amount of power over a given time period. 
 
 ![Solar Panels](https://github.com/PMetcalf/solar-power-generation-project/blob/master/Miscellaneous/solar_panel_low_res_201110.jpg)
 
-The project starts with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of maintenance using regression and neural network frameworks (Keras API). 
+The project begins with an exploration of the datasets and feature engineering, followed by the development of models for predicting plant performance, and solutions for detecting panels in need of a maintenance intervention using linear and neural network regressors. 
 
-Data has been gathered at two Indian solar power plants over a 34 day period. There are two datasets for each plant: One for power generation, and one for environmental sensor readings (temperatures, irradiation). 
+Data has been gathered at two Indian solar power plants over a 34 day period, with two datasets for each plant: One for power generation, and one for environmental sensor readings (temperatures, irradiation). 
 
-The power generation datasets are gathered at the inverter level, and each inverter has multiple lines of solar panels attached to it. The sensor data is gathered at plant level, with a single array of optimally-placed sensors.
+Generation datasets are gathered at the inverter level, and each inverter has multiple lines of solar panels connected into it. The sensor data is gathered at plant level, with a single array of carefully placed sensors.
 
-This project attempts to provide solutions for power station operation: Can we predict power generation over the next couple of days? Can we identify the need for panel cleaning or maintenance? Can we identify faulty or suboptimally performing equipment? 
+This project attempts to develop solutions to support power station operation: Can we predict power generation over the next couple of days? Can we identify the need for panel cleaning or maintenance? Can we identify faulty equipment? 
 
 Project Objectives
 ---
